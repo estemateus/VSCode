@@ -1,0 +1,11 @@
+# 08 de Setembro de 2025 | Escola da Nuvem
+
+# Solicita ao usuário que insira dois números
+num1 = 12
+num2 = 14
+
+# Calcula a soma dos dois números
+soma = num1 + num2
+
+# Exibe o resultado na tela
+print(soma) # Deve exibir 26
