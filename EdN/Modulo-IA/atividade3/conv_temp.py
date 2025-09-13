@@ -1,9 +1,13 @@
-# 12 de Setembro de 2025 | Escola da Nuvem
+# 13 de Setembro de 2025 | Escola da Nuvem
 
+# Conversão de temperatura
+
+# Dados de entrada
 temperatura = float(input("Digite a temperatura: "))
 escala = input("Digite a escala (C para Celsius, F para Fahrenheit, K para Kelvin): ").upper()
 conversao = input("Digite a escala para a qual deseja converter (C, F, K): ").upper()
 
+# Conversão
 if escala == 'C'and conversao == 'F':
     resultado = (temperatura * 9/5) + 32
     print(f"{temperatura}°C é igual a {resultado}°F")
