@@ -49,4 +49,4 @@ vogais = ('a', 'e', 'i', 'o', 'u')
 print(f"Tipo de objeto vogais: {type(vogais)}")
 for p, x in enumerate(vogais):
     print(f"Posição = {p}, vogal = {x}")
-
+# enumerate() -> retorna um objeto enumerado (índice, valor) de um objeto iterável
