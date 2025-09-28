@@ -92,3 +92,34 @@ conn.commit()
 #6. Fechar a conexão
 conn.close()
 
+# --CRUD - CREATE, READ, UPDATE, DELETE--
+
+# Os passos para efetuar o CRUD são sempre os mesmos:
+# 1 -> Estabelecer a conexão com um banco
+# 2 -> Criar um cursor e executar o comando
+# 3 -> Gravar a operação
+# 4 -> Fechar o cursor e a conexão
+
+# Criando um exemplo com a inserção de um novo produto na tabela 'Produtos'
+import sqlite3
+
+# Conectando ao banco de dados
+conn = sqlite3.connect("exemplo.db")
+cursor = conn.cursor()
+
+# Dados do novo produto
+novo_produto = ('Camiseta', 19.99, 50)
+
+# Comando SQL para inserir novo produto na tabela
+inserir_produto = 'INSERT INTO Produtos (nome, preco, estoque) VALUES (?, ?, ?)'
+
+# Executando o comando SQL para inserção
+cursor.execute(inserir_produto, novo_produto)
+
+# Confirmando as alterações
+conn.commit()
+
+# Fechando a conexão
+conn.close()
+
+import sqlite3
