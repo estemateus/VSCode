@@ -1,7 +1,13 @@
 # INTRODUÇÃO A MANIPULAÇÃO DE DADOS EM PANDAS
 
+# O foco da biblioteca pandas é a manipulação de dados
+# Dados de diverssas fonte: arquivos, páginas web, APIs, outros softwares, serviços de armazenamento em nuvem e bancos de dados
+# O pandas oferece uma variedade de métodos que permitem a leitura e o carregamento desses dados em estruturas chamadas DataFrames
+# Esses métodos de leitura têm em comum o prefixo 'pd.read_xxxx'
+# 'pd' é um alias frequentemente utilizado ao importar a biblioteca
+# Além da leitura, o pandas vários métodos para escrever os dados contidos em um DataFrame em arquivos, bancos de dados e áreas de transferência do sistema operacional
 
-
+# A lista abaixo mostra os métodos de leitura e escrita para os diferentes tipos de dados:
 '''
 Descrição do Dado: CSV
 Tipos de Dado: Texto
@@ -108,3 +114,45 @@ Tipos de Dado: SQL
 Método para Leitura: read_gbq
 Método para Escrita: to_gbq
 '''
+
+# -- CAPTURA E TRANSFORMAÇÃO DOS DADOS --
+
+# A etapa de captura e transformação/padronização dos dados é crucial no processo de análise de dados e modelagem de machine learning
+# Nessa fase se coleta os dados brutos de várias fontes, como arquivos CSV, bancos de dados, APIs e os prepara para uma análise posterior
+# Por ser uma biblioteca que fornece estruturas de dados flexíveis e ferramentas para manipular e transformar dados, o pandas é muito útil para essas tarefas
+
+# EXEMPLO
+'''
+import pandas as pd
+
+df_selic = pd.read_json('https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json')
+print(df_selic.info())
+'''
+
+# ESSE EXEMPLO DEU ESSE ERRO
+# 01 DE OUTUBRO DE 2025 | NÃO CONSIGO RESOLVER
+
+# SUPOSTO RESULTADO
+'''
+#resultado
+<class 'pandas.core.frame.DataFrame'>
+
+RangeIndex: 9379 entries, 0 to 9378
+
+Data columns (total 2 columns):
+
+ #   Column  Non-Null Count  Dtype 
+
+---  ------  --------------  ----- 
+
+ 0   data    9379 non-null   object
+
+ 1   valor   9379 non-null   float64
+
+dtypes: float64(1), object(1)
+
+memory usage: 146.7+ KB
+
+None
+'''
+
