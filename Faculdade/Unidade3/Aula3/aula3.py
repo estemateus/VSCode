@@ -155,3 +155,78 @@ memory usage: 146.7+ KB
 
 None
 '''
+
+# O primeiro passo para o desenvolvimento desse processo é importar o pandas
+# Em seguida, utilizamos o método para ler um arquivo JSON.
+# Por fim, pedimos informações sobre esse DataFrame:
+# Informação 1: existem 9.379 registros, 2 colunas, os índices são numéricos e variam de 0 a 9.378
+# Informação 2: não existem linhas faltantes, pois são 9.379 registros não-nulos (non-null)
+# Informação 3: os dados são do tipo "object", ou são todos strings, ou há uma mistura desses tipos
+
+# Após conhecer o DataFrame, vamos verificar a duplicidade de linhas
+# É considerado um passo muito importante
+# Utiliza-se a função drop_duplicates()
+
+# No exemplo abaixo será utilizado: df_selic.drop_duplicates(keep='last', inplace=True)
+# -> mantém o último registro (keep='last')
+# -> a partir do parâmetro inplace=True, faz com que a transformação seja salva do DataFrame
+# Na prática, estamos sobrescrevendo o objeto na memória
+# Nesse caso, não existem linhas duplicadas
+
+# -- CRIANDO UMA NOVA COLUNA NO DATAFRAME --
+# Usa-se a sintaxe: df_['nova_coluna'] = dado
+# No caso do exemplo abaixo serão inseridas duas colunas, uma com a data da extração dos dados e outra com o responsável pela extração.
+
+# EXEMPLO:
+'''
+from datetime import date
+
+from datetime import datetime as dt
+
+ 
+
+data_extracao = date.today()
+
+ 
+
+df_selic['data_extracao'] = data_extracao
+
+df_selic['responsavel'] = “Autor”
+
+ 
+
+print(df_selic.info())
+
+df_selic.head()
+'''
+
+# -- EXTRAINDO INFORMAÇÃO DOS DADOS --
+# Primeiro precisamos saber o que estamos procurando para tentar encontrar esse elemento nos dados
+# Algumas ferramentas e maneiras de procurar: filtros utilizando loc., filtros utilizando testes booleanos
+
+# Como utilizar o loc.:
+'''
+df_selic.loc[0]
+#resultado
+data 04/06/1986 valor 0.065041 data_extracao 2023-11-02 responsavel Autor Name: 0, dtype: object
+
+df_selic.loc[[0,20,70]]
+
+-> RESULTADO:
+Data         valor    data_extraçao responsável
+0  - 04/06/1986 - 0.065041 - 2023-11-02 - Autor
+20 - 02/07/1986 - 0.068301 - 2023-11-02 - Autor
+
+70 - 10/09/1986 - 0.131315 - 2023-11-02 - Autor
+'''
+
+# Utilizando o teste booleano:
+'''
+teste = df_selic['valor'] < 0.01
+
+print(type(teste))
+
+-> RESULTADO:
+
+<class 'pandas.core.series.Series'>
+'''
