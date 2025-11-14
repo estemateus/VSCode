@@ -9,7 +9,7 @@ pacientes = []
 # Função do menu
 def exibir_menu():
     #Esta função é responsável apenas por mostrar as opções do sistema.
-    print("\n" + "=" * 30 + " BEM-VINDO AO SISTEMA CLÍNICA VIDA+ " + "=" * 30 + "\n") # Cabeçalho
+    print("\n" + "=" * 30 + " SISTEMA CLÍNICA VIDA+ " + "=" * 30 + "\n") # Cabeçalho
     print("O que você deseja fazer hoje?")
     print("1. Cadastrar novo paciente")
     print("2. Ver estatísticas da clínica")
@@ -56,7 +56,7 @@ def ver_estatisticas(lista_pacientes):
     
     if total_pacientes == 0:
         print("\nNenhum paciente cadastrado para gerar estatísticas.")
-        print("=" * 75)
+        print("\n" + "=" * 75)
         return # Encerra a função se a lista estiver vazia
 
     # Variáveis de apoio para cálculo
@@ -101,6 +101,38 @@ def ver_estatisticas(lista_pacientes):
     
     print("\n" + "=" * 75)
 
+def buscar_paciente(lista_pacientes):
+    
+    # Implantando um sistema de busca de um paciente pelo nome.
+
+    print("\n" + "=" * 30 + " BUSCAR PACIENTE " + "=" * 30 + "\n")
+    
+    if not lista_pacientes:
+        print("\nNenhum paciente cadastrado para realizar buscas.")
+        print("\n" + "=" * 75)
+        return
+
+    # Solicita o nome a ser buscado
+    nome_busca = input("Digite o nome completo ou parte do nome do paciente: ").strip().title()
+    
+    # Variável auxiliar para saber se encontramos o paciente
+    encontrado = False
+    
+    # Percorre a lista para encontrar o paciente
+    for paciente in lista_pacientes:
+        # Verificando se o nome digitado está contido no nome completo do paciente
+        if nome_busca in paciente['nome']:
+            print(f"\nNome: {paciente['nome']}")
+            print(f"Idade: {paciente['idade']} anos")
+            print(f"Telefone: {paciente['telefone']}")
+            print("\n" + "=" * 75)
+            encontrado = True
+    
+    # Se o loop terminar e a variável 'encontrado' for False
+    if not encontrado:
+        print(f"\n'{nome_busca}' não foi encontrado na base de dados.")
+        print("\n" + "=" * 75)
+
 def listar_pacientes(lista_pacientes):
     # Exibindo todos os pacientes cadastrados na lista de forma organizada.
     print("\n" + "=" * 30 + " LISTA DE PACIENTES " + "=" * 30 + "\n")
@@ -126,7 +158,7 @@ def listar_pacientes(lista_pacientes):
 def main():
     while True:  # Rodando o programa em ciclo contínuo, esperando a ação do usuário.
         exibir_menu()
-        try: # Usamos o 'try-except' para tratamento erros.
+        try: # Usando o 'try-except' para tratamento erros.
             # Implementar o menu simples para navegação
             opcao = int(input("\nEscolha a opção desejada: "))
 
@@ -139,7 +171,7 @@ def main():
                 pass
 
             elif opcao == 3:
-                # LÓGICA DA BUSCA
+                buscar_paciente(pacientes) # LÓGICA DA BUSCA
                 pass
 
             elif opcao == 4:
